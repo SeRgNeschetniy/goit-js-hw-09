@@ -57,7 +57,7 @@ ref.start.addEventListener('click', onStart);
 
 function onStart() {
   const intervalID = setInterval(() => {
-    defTime = startTime - Date.now();
+    const defTime = startTime - Date.now();
     if (defTime >= 0) {
       updateTimerValue(convertMs(defTime));
     } else {
