@@ -27,20 +27,20 @@ function createPromise(position, delay) {
     setTimeout(() => {
       const shouldResolve = Math.random() > 0.3;
       if (shouldResolve) {
-        resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        resolve({ position, delay });
       } else {
-        reject(`❌ Rejected promise ${position} in ${delay}ms`);
+        reject({ position, delay });
       }
     }, delay);
   });
 
   promise
-    .then(result => {
-      Notify.success(result);
-      console.log(result);
+    .then(({ position, delay }) => {
+      Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      //console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
-    .catch(error => {
-      Notify.failure(error);
-      console.log(error);
+    .catch(({ position, delay }) => {
+      Notify.failure(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      //console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
     });
 }
